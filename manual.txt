@@ -1,0 +1,49 @@
+brew update
+brew upgrade
+
+1. Устанавливаем Apache
+brew install httpd
+
+2. Перенастроим дефолтный конфигурационный файл
+ vim /usr/local/etc/httpd/httpd.conf
+Файл с конфигом прилагается.
+
+3. Ставим последнюю версию PHP на Mac OS
+brew install php@7.4
+
+4. Запустить сервис PHP
+brew services run php
+
+Меняем конфиг php
+/usr/local/etc/phpmyadmin.config.inc.php
+$cfg['Servers'][$i]['AllowNoPassword'] = true;
+$cfg['Servers'][$i]['host'] = '127.0.0.1';
+
+Настройки для PHP указанной выше версии будут здесь:
+/usr/local/etc/php/7.3/php.ini
+
+5. После изменения обязательно надо перегрузить все сервисы
+brew services restart --all
+
+6. Устанавливаем MySQL на Mac OS
+brew install mysql
+
+Даем права:
+sudo chown -R _mysql:mysql /usr/local/var/mysql
+Запускаем сервер MySql
+sudo mysql.server start
+
+В конфиг MySQL
+/usr/local/etc/my.cnf
+
+Добавим
+default_authentication_plugin = mysql_native_password
+
+
+7. Устанавливаем phpMyAdmi
+brew install phpmyadmin
+
+8. Перегрузим все сервисы:
+brew services restart --all
+
+
