@@ -1,2 +1,2 @@
-# serer_for_macos
+# server_for_macos
  
